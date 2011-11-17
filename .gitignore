@@ -1,5 +1,6 @@
 ## python generated
 *.pyc
+*.pio
  
 ## generic files
 *~
