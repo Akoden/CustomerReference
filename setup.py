@@ -1,10 +1,10 @@
 from setuptools import setup
 
-setup(name='YourAppName',
+setup(name='CustomerReference',
       version='1.0',
-      description='OpenShift App',
-      author='Your Name',
-      author_email='example@example.com',
+      description='CustomerReference App',
+      author='Akoden GmbH',
+      author_email='theo@akoden.com',
       url='http://www.python.org/sigs/distutils-sig/',
 #      install_requires=['Django>=1.3'],
      )
