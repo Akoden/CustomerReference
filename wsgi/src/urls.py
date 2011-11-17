@@ -6,7 +6,7 @@ import views
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', 'CustomerReference.views.index', name='index'),
+    url(r'^$', 'views.index', name='index'),
     # url(r'^CustomerReference/', include('CustomerReference.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
