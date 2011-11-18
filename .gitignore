@@ -1,6 +1,9 @@
 ## python generated
 *.pyc
 *.pio
+
+## django-jenkins output
+wsgi/src/reports/
  
 ## generic files
 *~
