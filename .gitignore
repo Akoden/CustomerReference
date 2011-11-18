@@ -4,7 +4,8 @@
 
 ## django-jenkins output
 wsgi/src/reports/
- 
+reports
+
 ## generic files
 *~
 *.lock
