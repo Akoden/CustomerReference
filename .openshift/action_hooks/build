@@ -22,3 +22,4 @@ fi
 
 echo "Executing 'python $OPENSHIFT_REPO_DIR/wsgi/openshift/manage.py collectstatic --noinput'"
 python $OPENSHIFT_REPO_DIR/wsgi/src/manage.py collectstatic --noinput
+pip install -e git://github.com/kmmbvnr/django-jenkins.git#egg=django-jenkins
