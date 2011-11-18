@@ -7,6 +7,7 @@ import views, accounts.views
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', views.index, name='index'),
+    url(r'secure/$', views.secure),
     url(r'^accounts/login/', accounts.views.login),
     # url(r'^accounts/', include(auth.urls)),
     # url(r'^CustomerReference/', include('CustomerReference.foo.urls')),
