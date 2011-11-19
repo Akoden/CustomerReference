@@ -5,6 +5,7 @@
 ## django-jenkins output
 wsgi/src/reports/
 reports
+src/django-jenkins
 
 ## generic files
 *~
