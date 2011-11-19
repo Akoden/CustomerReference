@@ -1,10 +1,10 @@
 <mockup version="1.0" skin="sketch" measuredW="1150" measuredH="805" mockupW="1137" mockupH="793">
   <controls>
-    <control controlID="0" controlTypeID="com.balsamiq.mockups::MenuBar" x="13" y="12" w="720" h="29" measuredW="327" measuredH="29" zOrder="1" locked="false" isInGroup="-1">
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::MenuBar" x="13" y="12" w="720" h="29" measuredW="436" measuredH="29" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
-        <hrefs>Home%26bm%3BHome.bmml%26bm%3BHome.bmml%26bm%3BHome.bmml%2CWhat%27s%20Hot%26bm%3BWhat%27s%20Hot.bmml%26bm%3BWhat%27s%20Hot.bmml%26bm%3BWhat%27s%20Hot.bmml%2CAdd%20Reference%26bm%3BAdd%20Reference.bmml%26bm%3BAdd%20Reference.bmml%26bm%3BAdd%20Reference.bmml%2C</hrefs>
+        <hrefs>Home%26bm%3BHome.bmml%26bm%3BHome.bmml%26bm%3BHome.bmml%2CWhat%27s%20Hot%26bm%3BWhat%27s%20Hot.bmml%26bm%3BWhat%27s%20Hot.bmml%26bm%3BWhat%27s%20Hot.bmml%2CAdd%20Customer%26bm%3BAdd%20Customer.bmml%26bm%3BAdd%20Customer.bmml%26bm%3BAdd%20Customer.bmml%2CAdd%20Reference%26bm%3BAdd%20Reference.bmml%26bm%3BAdd%20Reference.bmml%26bm%3BAdd%20Reference.bmml%2C</hrefs>
         <selectedIndex>1</selectedIndex>
-        <text>Home%2C%20What%27s%20Hot%2C%20Add%20Reference%2C%20Help</text>
+        <text>Home%2C%20What%27s%20Hot%2C%20Add%20Customer%2C%20Add%20Reference%2C%20Help</text>
       </controlProperties>
     </control>
     <control controlID="10" controlTypeID="com.balsamiq.mockups::Title" x="144" y="44" w="-1" h="-1" measuredW="234" measuredH="56" zOrder="2" locked="false" isInGroup="-1">
