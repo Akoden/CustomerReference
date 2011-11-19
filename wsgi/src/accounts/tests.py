@@ -29,7 +29,7 @@ class TestSeleniumWebDriver(unittest.TestCase):
     def testLogin(self):
         driver = self.driver
         self.get("/accounts/login/")
-        driver.find_element_by_name("j_username").clear()
+        # driver.find_element_by_name("j_username").clear()
         # driver.find_element_by_name("j_username").send_keys("abc")
         # driver.find_element_by_name("j_password").clear()
         # driver.find_element_by_name("j_password").send_keys("ysvf")
