@@ -119,6 +119,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'admin',
+    'accounts',
     'csr',
     # 'django_jenkins',
     # Uncomment the next line to enable the admin:
