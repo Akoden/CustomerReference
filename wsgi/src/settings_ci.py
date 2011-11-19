@@ -6,6 +6,7 @@ INSTALLED_APPS.append('django_jenkins')
 
 PROJECT_APPS=(
         'csr',
+        'accounts',
         'admin'
 )
 
