@@ -3,3 +3,4 @@ Django
 mysql-python
 pil
 fabric
+selenium
