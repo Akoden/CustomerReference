@@ -1,13 +1,13 @@
 from django.conf.urls.defaults import patterns, include, url
-import views, accounts.views
+import csr.views, accounts.views
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', views.index, name='index'),
-    url(r'secure/$', views.secure),
+    url(r'^$', csr.views.index, name='index'),
+    url(r'secure/$', csr.views.secure),
     url(r'^accounts/login/', accounts.views.login),
     # url(r'^accounts/', include(auth.urls)),
     # url(r'^CustomerReference/', include('CustomerReference.foo.urls')),
