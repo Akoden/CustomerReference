@@ -6,8 +6,9 @@ import unittest, time, re
 
 
 BROWSER_CAPABILITIES = {
-    'version' : '8',
-    'name' : ''
+    'version' : '5',
+    'platform' : 'XP',
+    'name' : 'Testing Selenium 2'
 }
 
 SAUCELABS_EXECUTOR = "http://rotoudjimaye:02cefab9-c500-4f05-a761-00fc441f3187@ondemand.saucelabs.com:80/wd/hub"
@@ -15,24 +16,25 @@ BASE_URL = "http://csr-theo.rhcloud.com"
 
 class TestSeleniumWebDriver(unittest.TestCase):
     def setUp(self):
-        capabilities = webdriver.DesiredCapabilities.CHROME
-        capabilities.update(BROWSER_CAPABILITIES)
-        # self.driver = webdriver.Firefox()
+        capabilities = webdriver.DesiredCapabilities.FIREFOX
+        capabilities['version'] = '6'
+        capabilities['platform'] = 'XP'
+        capabilities['name'] = 'Testing Selenium 2 in Python at Sauce'
+        # capabilities.update(BROWSER_CAPABILITIES)
         self.driver = webdriver.Remote(desired_capabilities=capabilities, command_executor=SAUCELABS_EXECUTOR)
         self.driver.implicitly_wait(30)
-        # self.base_url = "http://csr-theo.rhcloud.com/"
         self.verificationErrors = []
     
-    def get(self, url):
+    def getUrl(self, url):
         return "".join([BASE_URL, str(url)])
 
     def testLogin(self):
         driver = self.driver
-        self.get("/accounts/login/")
-        # driver.find_element_by_name("j_username").clear()
-        # driver.find_element_by_name("j_username").send_keys("abc")
-        # driver.find_element_by_name("j_password").clear()
-        # driver.find_element_by_name("j_password").send_keys("ysvf")
+        driver.get(self.getUrl("/accounts/login/"))
+        driver.find_element_by_name("j_username").clear()
+        driver.find_element_by_name("j_username").send_keys("abc")
+        driver.find_element_by_name("j_password").clear()
+        driver.find_element_by_name("j_password").send_keys("ysvf")
         # driver.find_element_by_css_selector("input[type=\"submit\"]").click()
     
     def is_element_present(self, how, what):
