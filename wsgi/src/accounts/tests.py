@@ -19,7 +19,7 @@ class TestSeleniumWebDriver(unittest.TestCase):
         capabilities.update(BROWSER_CAPABILITIES)
         # self.driver = webdriver.Firefox()
         self.driver = webdriver.Remote(desired_capabilities=capabilities, command_executor=SAUCELABS_EXECUTOR)
-        self.driver.implicitly_wait(30)
+        self.driver.implicitly_wait(3000)
         # self.base_url = "http://csr-theo.rhcloud.com/"
         self.verificationErrors = []
     
@@ -29,7 +29,7 @@ class TestSeleniumWebDriver(unittest.TestCase):
     def testLogin(self):
         driver = self.driver
         self.get("/accounts/login/")
-        # driver.find_element_by_name("j_username").clear()
+        driver.find_element_by_name("j_username").clear()
         # driver.find_element_by_name("j_username").send_keys("abc")
         # driver.find_element_by_name("j_password").clear()
         # driver.find_element_by_name("j_password").send_keys("ysvf")
