@@ -150,8 +150,3 @@ LOGGING = {
         },
     }
 }
-
-PROJECT_APPS=(
-     # 'medias',
-     # 'django_jenkins',
-)

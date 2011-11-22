@@ -12,7 +12,7 @@ BROWSER_CAPABILITIES = {
 }
 
 SAUCELABS_EXECUTOR = "http://rotoudjimaye:02cefab9-c500-4f05-a761-00fc441f3187@ondemand.saucelabs.com:80/wd/hub"
-BASE_URL = "http://csr-theo.rhcloud.com"
+BASE_URL = "https://csr-theo.rhcloud.com"
 
 class TestSeleniumWebDriver(unittest.TestCase):
     def setUp(self):
@@ -35,7 +35,7 @@ class TestSeleniumWebDriver(unittest.TestCase):
         driver.find_element_by_name("j_username").send_keys("abc")
         driver.find_element_by_name("j_password").clear()
         driver.find_element_by_name("j_password").send_keys("ysvf")
-        # driver.find_element_by_css_selector("input[type=\"submit\"]").click()
+        driver.find_element_by_css_selector("input[type=\"submit\"]").click()
     
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)

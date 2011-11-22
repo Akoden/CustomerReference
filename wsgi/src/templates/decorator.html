@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <title>{% block title %}My amazing site{% endblock %}</title>
+</head>
+
+<body>
+
+<div id="body-wrapper">
+		<div id="header">
+			<h1><img height="20px" alt="StatIT Consulting" src="<s:url value='/images/logo.gif' />"  /></h1>
+			<h2><img alt="...your partner in market innovation." src="<s:url value='/images/your-partner-in-market-innovation.gif' />"/> </h2>
+			<div id="headerlinks"> 
+				<a href="http://www.statit-consulting.com"> Home </a>  | 
+				<a href="/accounts/logout/">Logout </a>
+			</div>
+		</div>
+		<div id="tabsnavig" class="clearfix">
+			<ul>
+
+<li id="produits"  class='selected' title="<s:text name='menu.products'/>"><a href="products/main"><s:text name="produits._main.tabName"/></a></li>
+<li id="solutions" title="<s:text name='menu.products'/>"><a href="products/main"><s:text name="produits._main.tabName"/></a></li>
+<li id="support"   title="<s:text name='menu.products'/>"><a href="products/main"><s:text name="produits._main.tabName"/></a></li>			
+<li id="training"  title="<s:text name='menu.products'/>"><a href="products/main"><s:text name="produits._main.tabName"/></a></li>
+<li id="partners"  title="<s:text name='menu.products'/>"><a href="products/main"><s:text name="produits._main.tabName"/></a></li>
+</ul>
+		</div>
+		<div id="content-wrapper">		
+			<div id="content-inner"> {% block content %}{% endblock %}</div> 
+		</div>
+		<div id="footer">
+			<address>
+				<a href="mailto: rotoudjimaye.theo@gmail.com"	style=" font-weight: bold; color: black;">&copy; ROTOUDJIMAYE Théophile, 2009 </a>
+			</address>
+		</div>
+</div>
+</body>
+</html>
+

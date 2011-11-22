@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-CustomerReference project, By Akoden GmbH
-=======
+
 Feel free to change or remove this file, it is informational only.
 
 Repo layout
@@ -55,4 +53,3 @@ Notes about setup.py
 
 Adding deps to the install_requires will have the openshift server actually
 install those deps at git push time.
->>>>>>> 95d5c6c2527680f4410494b2bdf09c1de960d2e2
