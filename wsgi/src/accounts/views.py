@@ -15,6 +15,7 @@ class LoginForm(forms.Form):
 @csrf_protect
 def login(request):
     form = LoginForm(request.POST) if (request.method == 'POST') else LoginForm()
+    is_ajax = request.GET.get('ajax') 
     if request.method == 'POST' and form.is_valid():
         username, password = form.cleaned_data['username'], form.cleaned_data['password']
         user = auth.authenticate(username=username, password=password)
@@ -23,10 +24,12 @@ def login(request):
                 auth.login(request, user)
                 # Redirect to a success page.
 	        next_view = request.GET.get('next')
-	        return HttpResponseRedirect(next_view if next_view else '/welcome/')
+		if not is_ajax:
+	            return HttpResponseRedirect(next_view if next_view else '/welcome/')
             else:
                 # Return a 'disabled account' error message
-	        return HttpResponseRedirect('/accounts/disabled/')     
+		if not is_ajax:
+	            return HttpResponseRedirect('/accounts/disabled/')     
     return render(request, 'accounts/login.html', {'form': form})
 
 

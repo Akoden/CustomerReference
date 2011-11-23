@@ -9,7 +9,7 @@ body {
 }
 
 #body-wrapper {
-	width: 970px;
+	width: 800px;
 	margin: 10px auto;
 	text-align: center;
 	border: 1px solid #A4B9CA;
@@ -19,7 +19,7 @@ body {
 #header {
 	background: #34495A url(bg-img/header-bg-fade.gif) repeat-x top;
 	color: #fff;
-	height: 30px;
+	height: 10px;
 	position: relative;
 }
 
