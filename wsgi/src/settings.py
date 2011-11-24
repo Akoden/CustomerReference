@@ -5,6 +5,9 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ##
+ON_OPENSHIFT = os.environ.has_key('OPENSHIFT_REPO_DIR')
+
+##
 PROJECT_DIR = os.path.dirname(os.path.realpath(__file__))
 
 ##
@@ -15,10 +18,14 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+##
+##
+DB_DIRECTORY = os.environ['OPENSHIFT_DATA_DIR'] if ON_OPENSHIFT else PROJECT_DIR
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'sqlite3',                      # Or path to database file if using sqlite3.
+        'NAME':  os.path.join(DB_DIRECTORY, 'sqlite3.db'),                      # Or path to database file if using sqlite3.
         'USER': 'admin',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
