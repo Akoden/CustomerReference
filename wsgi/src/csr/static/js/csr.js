@@ -13,7 +13,7 @@ $(document).ready(function(){
 
 		    evt.preventDefault();
 		    
-		    var url = '/accounts/login/?ajax=true';
+		    var url = '/accounts/login/.json';
 		    var fieldsData = $form.serialize();
 		    var callback =  function(json, status) {
 		        if( json['result'] == 'success' ){

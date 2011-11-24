@@ -9,6 +9,15 @@
     <script type='text/javascript' src='/static/js/jquery.form.js'></script>
     <script type='text/javascript' src='/static/js/csr.js'></script>
     <title>{% block title %}My amazing site{% endblock %}</title>
+    <script type='text/javascript' >
+
+     {% if view_id %}
+      var viewId = '{{ view_id }}';
+      $(document).ready(function(){
+          $("#tablinks li#{{ view_id }}").find("a").addClass("selected");
+      });
+     {% endif %}
+    </script>
 </head>
 
 <body id="cols3">
@@ -25,11 +34,11 @@
 				
 		<div id="tablinks" class="clearfix">
 			<ul>
-				<li id="produits"  ><a href="/home/">{% trans "Home" %}</a></li>
-				<li id="solutions" ><a href="/what_s_hot/">{% trans "What's Hot" %}</a></li>
-				<li id="support"   ><a href="/add_customer/" class='selected'>{% trans "Add Customer" %}</a></li>			
-				<li id="training"  ><a href="/add_reference/">{% trans "Add Reference" %}</a></li>
-				<li id="partners"  ><a href="/help/">{% trans "Help" %}</a></li>
+				<li id="home"  ><a href="/home/">{% trans "Home" %}</a></li>
+				<li id="what_s_hot" ><a href="/what_s_hot/">{% trans "What's Hot" %}</a></li>
+				<li id="add_customer"   ><a href="/add_customer/">{% trans "Add Customer" %}</a></li>			
+				<li id="add_reference"  ><a href="/add_reference/">{% trans "Add Reference" %}</a></li>
+				<li id="help"  ><a href="/help/">{% trans "Help" %}</a></li>
 			</ul>
 			<div class="headerlinks">  
 				<a href="/accounts/login/" id="login-status">Login</a>

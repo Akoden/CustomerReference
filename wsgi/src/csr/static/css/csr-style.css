@@ -119,7 +119,8 @@ text-decoration:none;
 
 #tablinks li a.selected
 {
-background:#047070 url(tab-bg-hover.gif) repeat-x top;
+/* background:#047070 url(tab-bg-hover.gif) repeat-x top; */
+background: #009F9F ;
 }
 
 #breadcrumb

@@ -7,6 +7,7 @@ import django.contrib.auth as auth
 
 from django.http import HttpResponseRedirect, HttpResponse
 import simplejson
+from csr.utils import render_ext
 
 
 class LoginForm(forms.Form):
@@ -14,28 +15,30 @@ class LoginForm(forms.Form):
     password = forms.CharField(max_length=100, widget=forms.PasswordInput, required=True)
 
 @csrf_protect
+@render_ext('',
+    { 'success':  {'location': '/welcome/successful-login'},
+      'disabled': {'location': 'accounts/login.html'},
+      'error':    {'location': 'accounts/login.html'} })
 def login(request):
     form = LoginForm(request.POST) if (request.method == 'POST') else LoginForm()
-    is_ajax = request.GET.get('ajax') 
     if request.method == 'POST' and form.is_valid():
         username, password = form.cleaned_data['username'], form.cleaned_data['password']
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             if user.is_active:
-                auth.login(request, user)
-                # Redirect to a success page.
+                auth.login(request, user) 
 	        next_view = request.GET.get('next')
-		if is_ajax:
-		    return HttpResponse(simplejson.dumps({'result' : 'success', 'username':username}), mimetype='application/json')
-	        return HttpResponseRedirect(next_view if next_view else '/welcome/')
+		if next_view:
+		    return ('redirect', next_view)
+		return ('success', {'username': username})
             else:
                 # Return a 'disabled account' error message
-		if is_ajax:
-		    return HttpResponse(simplejson.dumps({'result' : 'error', 'status': 'disabled-account'}), mimetype='application/json')
-	        return HttpResponseRedirect('/accounts/disabled/')     
-    return render(request, 'accounts/login.html', {'form': form})
+		return ('disabled', {'username': username})   
+    # return render(request, 'accounts/login.html', {'form': form})
+    return ('error', { 'form': form })
 
 
+@render_ext('')
 def logout(request):
    auth.logout(request)
-   return HttpResponseRedirect('/accounts/login/')
+   return ('redirect', '/accounts/login/')
