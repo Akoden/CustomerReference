@@ -10,16 +10,26 @@ $(document).ready(function(){
 		$dlg.dialog();
 		
 		$form.on('submit', function(evt){
-		    evt.preventDefault();
-		    $form.attr('action', '/accounts/login/?ajax=true').ajaxSubmit(function(response, status) {
-		    	var content = $(response);
-			if( !content.find('form').length ){
-			    $dlg.close();
-			}
-		    });
-		});
 
-		// $("<div>").wrapInner(form).dialog().appendTo("#content-inner");
+		    evt.preventDefault();
+		    
+		    var url = '/accounts/login/?ajax=true';
+		    var fieldsData = $form.serialize();
+		    var callback =  function(json, status) {
+		        if( json['result'] == 'success' ){
+			    $("#login-status").text(json['username']);
+			    $dlg.dialog('close');
+			}
+		    };
+
+		    $.ajax({
+  			url: url,
+  			dataType: 'json',
+  			data: fieldsData,
+  			success: callback,
+			type: 'POST'
+		    });
+              });
 	   });
 	   event.preventDefault();
 	});

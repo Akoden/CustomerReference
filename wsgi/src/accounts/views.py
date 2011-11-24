@@ -5,7 +5,8 @@ from django.shortcuts import render, render_to_response
 from django.views.decorators.csrf import csrf_protect
 import django.contrib.auth as auth
 
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
+import simplejson
 
 
 class LoginForm(forms.Form):
@@ -24,12 +25,14 @@ def login(request):
                 auth.login(request, user)
                 # Redirect to a success page.
 	        next_view = request.GET.get('next')
-		if not is_ajax:
-	            return HttpResponseRedirect(next_view if next_view else '/welcome/')
+		if is_ajax:
+		    return HttpResponse(simplejson.dumps({'result' : 'success', 'username':username}), mimetype='application/json')
+	        return HttpResponseRedirect(next_view if next_view else '/welcome/')
             else:
                 # Return a 'disabled account' error message
-		if not is_ajax:
-	            return HttpResponseRedirect('/accounts/disabled/')     
+		if is_ajax:
+		    return HttpResponse(simplejson.dumps({'result' : 'error', 'status': 'disabled-account'}), mimetype='application/json')
+	        return HttpResponseRedirect('/accounts/disabled/')     
     return render(request, 'accounts/login.html', {'form': form})
 
 

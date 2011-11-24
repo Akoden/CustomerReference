@@ -10,11 +10,20 @@ import csr.views, accounts.views
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
+
     url(r'^$', csr.views.index, name='index'),
-    url(r'secure/$', csr.views.secure),
+    url(r'^help/', csr.views.help, name='index'),
+    
+    url(r'secure/', csr.views.secure),
+    url(r'home/', csr.views.home),
+    url(r'what_s_hot/', csr.views.what_s_hot),
+    url(r'customers/', csr.views.customers),
+    url(r'add_customer/', csr.views.add_customer),
+    url(r'add_reference/', csr.views.add_reference),
+    
     url(r'^accounts/login/', accounts.views.login),
     url(r'^accounts/logout/', accounts.views.logout),
+     
     # url(r'^accounts/', include(auth.urls)),
     # url(r'^CustomerReference/', include('CustomerReference.foo.urls')),
 

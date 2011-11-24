@@ -4,3 +4,4 @@ mysql-python
 pil
 fabric
 selenium
+simplejson
