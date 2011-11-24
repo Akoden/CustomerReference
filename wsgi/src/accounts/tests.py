@@ -31,10 +31,10 @@ class TestSeleniumWebDriver(unittest.TestCase):
     def testLogin(self):
         driver = self.driver
         driver.get(self.getUrl("/accounts/login/"))
-        driver.find_element_by_name("j_username").clear()
-        driver.find_element_by_name("j_username").send_keys("abc")
-        driver.find_element_by_name("j_password").clear()
-        driver.find_element_by_name("j_password").send_keys("ysvf")
+        driver.find_element_by_name("username").clear()
+        driver.find_element_by_name("username").send_keys("abc")
+        driver.find_element_by_name("password").clear()
+        driver.find_element_by_name("password").send_keys("ysvf")
         driver.find_element_by_css_selector("input[type=\"submit\"]").click()
     
     def is_element_present(self, how, what):
@@ -57,8 +57,8 @@ class TestRemote(unittest.TestCase):
         sel.open("/")
         sel.click("link=secure page")
         sel.wait_for_page_to_load("30000")
-        sel.type("name=j_username", "abc")
-        sel.type("name=j_password", "ysvf")
+        sel.type("name=username", "abc")
+        sel.type("name=password", "ysvf")
         sel.click("css=input[type=\"submit\"]")
         sel.wait_for_page_to_load("30000")
     
