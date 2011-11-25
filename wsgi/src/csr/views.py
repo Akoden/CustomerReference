@@ -5,8 +5,9 @@ from django.contrib.auth.decorators import login_required
 from csr.utils import render_ext
 
 # @login_required
+@render_ext('home')
 def index(req):
-    return render_to_response('index.html')
+    return ('render', 'index.html')
 
 
 @login_required

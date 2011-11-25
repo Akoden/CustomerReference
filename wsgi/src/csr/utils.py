@@ -17,9 +17,10 @@ def render_ext(view_id, viewmap={}):
 	    if result == 'render':
 	        data = raw_result[2] if len(raw_result) > 2 else {}
 		data['view_id'] = view_id
+		data['user'] = httpRequest.user if httpRequest.user.is_authenticated() else None
 	        return render_to_response(raw_result[1], data)
 	    if result == 'redirect':
-	    	return HttpResponseRedirect(resultData)	
+	    	return HttpResponseRedirect(raw_result[1])	
 	    ##
 	    result, resultData = raw_result 
 	    rpath = httpRequest.path
@@ -29,7 +30,8 @@ def render_ext(view_id, viewmap={}):
 	    result_spec = viewmap.get(result)
 	    if not result_spec:
 	        raise Exception("result [%s] has not been specified" % result)	    
-            if extension == "html":
+            resultData['user'] = httpRequest.user if httpRequest.user.is_authenticated() else None
+	    if extension == "html":
 	        template_location = result_spec.get('location')
 		if not template_location:
 		    raise Exception("attribute 'location' is required in viewmap for result of type %s" % extension)

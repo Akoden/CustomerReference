@@ -27,8 +27,8 @@
  			<h1><img src="/static/css/logo.gif" alt="TravelGo.com" /></h1>
 			 <h2><img src="/static/css/getting-you-there.gif" alt="Getting you there since 1972" /></h2>
 		
-			<div class="headerlinks">  
-				<a href="/accounts/login/">Login</a>
+			<div class="headerlinks"> 
+				<a href="/accounts/login/">Login</a> 
 			</div>
 		</div>
 				
@@ -40,8 +40,14 @@
 				<li id="add_reference"  ><a href="/add_reference/">{% trans "Add Reference" %}</a></li>
 				<li id="help"  ><a href="/help/">{% trans "Help" %}</a></li>
 			</ul>
-			<div class="headerlinks">  
-				<a href="/accounts/login/" id="login-status">Login</a>
+			<div class="headerlinks"> 
+			   {% if user %} 
+				<a href="/accounts/login/" id="login-status">{{ user }}</a> | 
+				<a id="logout-link" href="/accounts/logout/">Logout</a> 
+			   {% else %}
+				<a href="/accounts/login/" id="login-status">Login</a> | 
+				<a id="logout-link" href="/accounts/logout/" style="visibility: hidden;">Logout</a> 				
+			    {% endif %}
 			</div>		
 		</div>
 		<div id="breadcrumb">You are here: <a href="/customers/">Customers</a> &gt; <a href="/add-customer/">Add Customer</a></div>
