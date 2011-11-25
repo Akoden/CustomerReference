@@ -1,10 +1,10 @@
 
 $(document).ready(function(){
-
         
     var $loginDialog;
     
     $("#login-status").on('click', function(event){
+	
 	$.get("/accounts/login/", function(result){
 
 
