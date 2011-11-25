@@ -1,6 +1,7 @@
-/* 
+/* ******************************************************************
  * This is the main js script file for the CustomerReference project
- * Author : theo@akoden.com */
+ * Use jQuery API
+ * Author : theo@akoden.com ****************************************/
 $(document).ready(function(){
         
     var $loginDialog;
