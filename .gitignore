@@ -13,3 +13,7 @@ src/django-jenkins
 *.DS_Store
 *.swp
 *.out
+
+## emacs autosave files
+\#*#
+\#*
