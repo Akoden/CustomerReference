@@ -3,6 +3,7 @@
  * Use jQuery API
  * Author : theo@akoden.com
  * ************************ ****************************************/
+
 $(document).ready(function(){
         
     var $loginDialog;
