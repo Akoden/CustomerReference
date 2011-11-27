@@ -1,7 +1,13 @@
 {% extends "decorator.html" %}
 
-{% block title%} Add Customer Reference {% endblock title %}
+{% block title %} Add Customer Reference {% endblock %}
 
 {% block content %}
-<h3> Add Reference </h3>
+        <h3> Add Reference </h3>
+	<form  method="POST" encoding='multipart/form-data' >
+	{% csrf_token %}
+        {{ form.as_p }}
+	<input type='submit'  /> 
+	</form> 
+
 {% endblock content %}

@@ -1,0 +1,29 @@
+{% extends "decorator.html" %}
+
+{% block title %} Customer References {% endblock title %}
+
+{% block content %}
+<h3> Customer References </h3>
+
+
+<table class="customers">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Customer</th>
+      <th>Is Public</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in references %}
+    <tr>
+      <td><a href="/reference/{{r.id}}">{{ r.title }}</a></td>
+      <td>{{ r.customer }}</td>
+      <td>{{ r.ispublic }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+
+</table>
+
+{% endblock content %}

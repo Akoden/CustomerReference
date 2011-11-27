@@ -1,0 +1,30 @@
+{% extends "decorator.html" %}
+
+{% block title %} Customer References {% endblock title %}
+
+{% block content %}
+<h3> {{reference.title}} </h3>
+
+
+<dl>
+
+<dt>Customer: </dt>
+<dd>{{ reference.customer }}</dd>
+
+<dt>Industry: </dt>
+<dd>{{ reference.customer.get_industry }}</dd>
+
+<dt>Geography: </dt>
+<dd>{{ reference.customer.get_geography }}</dd>
+
+<dt>Story: </dt>
+<dd>
+<p>
+{{ reference.story }}
+</p>
+</dd>
+
+</dl>
+
+
+{% endblock content %}

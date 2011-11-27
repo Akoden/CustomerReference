@@ -2,7 +2,7 @@
 
 from django.shortcuts import render, render_to_response
 import simplejson
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, HttpResponseNotFound
 
 
 def default_encoder(obj):
@@ -10,8 +10,8 @@ def default_encoder(obj):
 
 def render_ext(view_id, viewmap={}):
     def decorator(target):
-        def inner(httpRequest):
-	    raw_result = target(httpRequest);
+        def inner(httpRequest, *args):
+	    raw_result = target(httpRequest, *args);
 	    ## special results
 	    result = raw_result[0] 
 	    if result == 'render':
@@ -20,7 +20,9 @@ def render_ext(view_id, viewmap={}):
 		data['user'] = httpRequest.user if httpRequest.user.is_authenticated() else None
 	        return render_to_response(raw_result[1], data)
 	    if result == 'redirect':
-	    	return HttpResponseRedirect(raw_result[1])	
+	    	return HttpResponseRedirect(raw_result[1])
+            if result == 'not-found':
+                return HttpResponseNotFound("Not Found")
 	    ##
 	    result, resultData = raw_result 
 	    rpath = httpRequest.path

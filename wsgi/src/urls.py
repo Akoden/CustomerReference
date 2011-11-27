@@ -19,8 +19,10 @@ urlpatterns = patterns('',
     url(r'what_s_hot/', csr.views.what_s_hot),
     url(r'customers/', csr.views.customers),
     url(r'add_customer/', csr.views.add_customer),
+    url(r'references/', csr.views.references),
     url(r'add_reference/', csr.views.add_reference),
-    
+    url(r'reference/(\d+)/$', csr.views.reference),                   
+
     url(r'^accounts/login/', accounts.views.login),
     url(r'^accounts/logout/', accounts.views.logout),
      

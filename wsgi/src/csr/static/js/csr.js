@@ -18,12 +18,19 @@ $(document).ready(function(){
 		$loginDialog = null;
 	    }
 
-	    $loginDialog = $("#content-inner").append("<div>").find("div").dialog();
+	    $loginDialog = $("#content-inner")
+		.append("<div>").find("div").dialog()
+		.append("<div class='error-msg'>")
+		.append("<div class='content'>");
 	    
 	    var $form = $(result).find("form");
 	    $loginDialog.append($form);
+
+	    $loginDialog.find("input[name=username]").val("username").select();
 	    
 	    $form.on('submit', function(evt){
+
+		$loginDialog.find("div.error-msg").text("");
 
 		evt.preventDefault();
 		
@@ -35,6 +42,8 @@ $(document).ready(function(){
 			$("#logout-link").css({'visibility':'visible'});
 			$loginDialog.dialog('close');
 			$loginDialog = null;
+		    }else{
+			$loginDialog.find("div.error-msg").append('Your login informations are not correct');
 		    }
 		};
 		

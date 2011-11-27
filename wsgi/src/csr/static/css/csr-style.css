@@ -1,4 +1,4 @@
-div, ul, ol {padding: 0px; margin: 0px; }
+div, ul, ol, a {padding: 0px; margin: 0px; }
 body
 {
 margin:10px 40px;
@@ -92,7 +92,8 @@ border:1px solid black;
 
 #tablinks
 {
-background:#336868 url(tab-bg.gif) repeat-x top;
+/* background:#336868 url(tab-bg.gif) repeat-x top; */
+background: #336868 url("/static/images/primary-nav-bg.png") repeat-x top;
 }
 
 #tablinks li
@@ -120,12 +121,15 @@ text-decoration:none;
 #tablinks li a.selected
 {
 /* background:#047070 url(tab-bg-hover.gif) repeat-x top; */
-background: #009F9F ;
+background: #047070 url("/static/images/tab-active-bg.png") repeat-x top;
+/* background: #000; */
 }
 
 #breadcrumb
 {
-background: #009F9F;
+/* background: #009F9F; */
+/* background: #D8000C;*/
+background: #000;
 color:#fff;
 padding:5px 10px;
 }
@@ -192,7 +196,8 @@ background-repeat: no-repeat;
 {
 padding:5px 0 5px 160px;
 clear:both;
-background: #D9FFF8;
+/* background: #D9FFF8;*/
+background: #000;
 font-size:0.8em;
 color:#030;
 }
