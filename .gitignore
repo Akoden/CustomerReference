@@ -16,4 +16,4 @@ src/django-jenkins
 
 ## emacs autosave files
 \#*#
-\#*
+.\#*
