@@ -18,7 +18,7 @@ class ReferenceForm(ModelForm):
             'story': Textarea(attrs={'cols': 80, 'rows': 20}),
             }
 
-
+#
 # @login_required
 @render_ext('home')
 def index(req):
@@ -26,18 +26,22 @@ def index(req):
 
 
 @login_required
-@render_ext('secure')
+@render_ext('secure', {'success':  {'location': 'secure.html'}})
 def secure(req):
     return ('render', 'secure.html')
 
-@render_ext('home')
-def home(req):
-    return ('render', 'home.html')
+@render_ext('home', {'success':  {'location': 'home.html'}})
+def home(request):
+    references = Reference.objects.order_by('-hotness')[0:3]
+    for r in references: r.get_my_vote(request.user)
+    return ('success', {'references': references})
 
 
-@render_ext('what_s_hot')
-def what_s_hot(req):
-    return ('render', 'what_s_hot.html')
+@render_ext('what_s_hot', {'success':  {'location': 'what_s_hot.html'}})
+def what_s_hot(request):
+    references = Reference.objects.order_by('-hotness')[0:10]
+    for r in references: r.get_my_vote(request.user)
+    return ('success', {'references': references})
 
 ##
 ##
@@ -47,7 +51,7 @@ def customers(req):
 
 
 @login_required
-@render_ext('add_customer',
+@render_ext('customers',
     { 'success':  {'location': 'add_customer.html'},
       'error':    {'location': 'add_customer.html'} })
 def add_customer(req):
@@ -69,7 +73,7 @@ def references(request):
     return ('success', {'references': references})
 
 @login_required
-@render_ext('add_reference',
+@render_ext('references',
     { 'success':  {'location': 'add_reference.html'},
       'error':    {'location': 'add_reference.html'} })
 def add_reference(req):
@@ -85,10 +89,12 @@ def add_reference(req):
 
 @login_required
 @render_ext('references', { 'success':  {'location': 'reference.html'}})
-def reference(req, ref_id):
+def reference(request, ref_id):
     try:
-        return ('success', {'reference': Reference.objects.get(id=ref_id)})
-    except:
+        reference =  Reference.objects.get(id=ref_id)
+        reference.get_my_vote(request.user)
+        return ('success', {'reference': reference})
+    except Reference.DoesNotExist:
         return 'not-found'
 
 @login_required
@@ -106,6 +112,9 @@ def reference_vote(request, ref_id):
             reference.votes = ReferenceVote.objects.filter(reference=reference).count()
             reference.update_hotness_score()
             reference.save()
+        next_view = request.GET.get('next')
+        if next_view:
+            return ('redirect', next_view)
         return ('redirect', '/references/')
     except Reference.DoesNotExist:
         return 'not-found'

@@ -2,6 +2,23 @@
 
 {% block title %} Home {% endblock title %}
 
+{% block breadcrumb %}
+<a href="/home/">Home</a>
+{% endblock breadcrumb %}
+
 {% block content %}
-<h3> Customer References App </h3>
+<h3> Home - Featured References </h3>
+
+
+    {% for r in references %}
+    <dl style="border: 1px solid;">
+      <dt>Title</dt>
+      <dd><a href="/reference/{{r.id}}">{{ r.title }}</a></dd>
+      <dt>Customer</dt>
+      <dd>{{ r.customer }}</dd>
+      <dt>Story</dt>
+      <dd>{{ r.story }}</dd>
+   </dl>
+    {% endfor %}
+
 {% endblock content %}

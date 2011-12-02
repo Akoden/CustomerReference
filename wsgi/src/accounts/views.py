@@ -24,7 +24,6 @@ def create_account(): pass
     { 'success':  {'location': '/welcome/successful-login'},
       'disabled': {'location': 'accounts/login.html'},
       'error':    {'location': 'accounts/login.html'} })
-
 def login(request):
     form = LoginForm(request.POST) if (request.method == 'POST') else LoginForm()
     if request.method == 'POST' and form.is_valid():

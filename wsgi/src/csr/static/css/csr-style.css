@@ -220,3 +220,6 @@ color:#030;
 input{padding: normal; margin: normal;}
 
 #content-inner {min-height: 500px; }
+
+/* */
+.reference-view dt {color: #666 ;}

@@ -2,11 +2,14 @@
 
 {% block title %} Customer References {% endblock title %}
 
+{% block breadcrumb %}
+<a href="/references/">References</a> &gt; <a href="/reference/{{reference.id}}">Reference</a>
+{% endblock breadcrumb %}
 {% block content %}
 <h3> {{reference.title}} </h3>
 
 
-<dl>
+<dl class="reference-view">
 
 <dt>Customer: </dt>
 <dd>{{ reference.customer }}</dd>
@@ -22,6 +25,11 @@
 <p>
 {{ reference.story }}
 </p>
+</dd>
+
+<dt>My Vote</dt>
+<dd>
+{% if reference.my_vote %}done{% else %}<a href='/reference/vote/{{reference.id}}?next=/reference/{{reference.id}}'>Cast</a>{% endif %}
 </dd>
 
 </dl>
