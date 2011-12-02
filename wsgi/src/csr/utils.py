@@ -13,7 +13,7 @@ def render_ext(view_id, viewmap={}):
         def inner(httpRequest, *args):
 	    raw_result = target(httpRequest, *args);
 	    ## special results
-	    result = raw_result[0] 
+	    result = raw_result[0] if isinstance(raw_result, (list, tuple)) else raw_result 
 	    if result == 'render':
 	        data = raw_result[2] if len(raw_result) > 2 else {}
 		data['view_id'] = view_id

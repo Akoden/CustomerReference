@@ -8,7 +8,7 @@ $(document).ready(function(){
         
     var $loginDialog;
     
-    $("#login-status").on('click', function(event){
+    $("#login-link").on('click', function(event){
 	
 	$.get("/accounts/login/", function(result){
 
@@ -37,8 +37,11 @@ $(document).ready(function(){
 		var url = '/accounts/login/.json';
 		var fieldsData = $form.serialize();
 		var callback =  function(json, status) {
-		    if( json['result'] == 'success' ){
-			$("#login-status").text(json['username']);
+	
+		    if( json['result'] == 'success' ){			
+			$("#login-link")
+			    .attr({'id': 'login-status', 'href':'/accounts/account/'})
+			    .text(json['username']).off('click');
 			$("#logout-link").css({'visibility':'visible'});
 			$loginDialog.dialog('close');
 			$loginDialog = null;

@@ -1,9 +1,7 @@
 
 
 from django.db import models
-
-
-
+import datetime
 
 
 class Customer(models.Model):
@@ -31,7 +29,7 @@ class Customer(models.Model):
 
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=30)
-    email = models.EmailField(max_length=30, null=True, verbose_name="E-mail")
+    # email = models.EmailField(max_length=30, null=True, verbose_name="E-mail")
     website = models.CharField(max_length=30, null=True)
     geography = models.CharField(max_length=30, null=True, choices=GEOGRAPHY_CHOICE)
     industry = models.CharField(max_length=30, null=True, choices=INDUSTRY_CHOICE)
@@ -44,6 +42,8 @@ class Customer(models.Model):
         return dict(self.GEOGRAPHY_CHOICE).get(self.geography)
 
 
+def timedelta_to_seconds(td):
+    return (td.microseconds + (td.seconds + td.days * 24 * 3600) * 10**6) / 10**6
 
 class Reference(models.Model):
     id = models.AutoField(primary_key=True)
@@ -52,4 +52,34 @@ class Reference(models.Model):
     # story = models.FileField(upload_to="/customer-stories")
     story = models.CharField(max_length=3000)
     ispublic = models.BooleanField(default=False, verbose_name="Make Public")
+    votes = models.IntegerField(default=0, editable=False, blank=True)
+    hotness = models.IntegerField(default=0, editable=False, blank=True)
+    submitDate = models.DateTimeField(auto_now_add=True)
+    
+    def get_my_vote(self, username):
+        my_vote = ReferenceVote.objects.filter(reference=self, account = Account.objects.filter(username=username))
+        self.my_vote = True if my_vote else False
+    
+    def update_hotness_score(self):
+        # a la HackerNews
+        if not self.votes:
+            self.hotness = 0
+            return
+        gravity = 1.8
+        seconds_per_day = 24 * 60 * 60
+        timedelta = datetime.datetime.now() - self.submitDate
+        age_in_days = round(timedelta_to_seconds(timedelta) / seconds_per_day)
+        age_in_minutes =  round(timedelta_to_seconds(timedelta) / 60)
+        self.hotness = int(round(  (self.votes - 1) / pow(age_in_days+1, gravity) ))
 
+class Account(models.Model):
+    id = models.AutoField(primary_key=True)
+    username = models.CharField(max_length=30, unique=True)
+    firstname = models.CharField(max_length=30, null=True)
+    lastname = models.CharField(max_length=30, null=True)
+
+
+class ReferenceVote(models.Model):
+    reference = models.ForeignKey(Reference)
+    account = models.ForeignKey(Account)
+    submitDate = models.DateTimeField(auto_now_add=True)

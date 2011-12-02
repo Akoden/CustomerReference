@@ -21,9 +21,11 @@ urlpatterns = patterns('',
     url(r'add_customer/', csr.views.add_customer),
     url(r'references/', csr.views.references),
     url(r'add_reference/', csr.views.add_reference),
-    url(r'reference/(\d+)/$', csr.views.reference),                   
+    url(r'reference/(\d+)/$', csr.views.reference), 
+    url(r'reference/vote/(\d+)/$', csr.views.reference_vote),
 
     url(r'^accounts/login/', accounts.views.login),
+    url(r'^accounts/account/', accounts.views.account),
     url(r'^accounts/logout/', accounts.views.logout),
      
     # url(r'^accounts/', include(auth.urls)),

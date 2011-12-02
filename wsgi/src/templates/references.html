@@ -12,6 +12,9 @@
       <th>Title</th>
       <th>Customer</th>
       <th>Is Public</th>
+      <th>My Vote</th>
+      <th>Total Votes</th>
+      <th>Hotness Score</th>
     </tr>
   </thead>
   <tbody>
@@ -20,6 +23,9 @@
       <td><a href="/reference/{{r.id}}">{{ r.title }}</a></td>
       <td>{{ r.customer }}</td>
       <td>{{ r.ispublic }}</td>
+      <td>{% if r.my_vote %}done{% else %}<a href='/reference/vote/{{r.id}}'>cast</a>{% endif %}</td>
+      <td>{{ r.votes }}</td>
+      <td>{{ r.hotness }}</td>
     </tr>
     {% endfor %}
   </tbody>
