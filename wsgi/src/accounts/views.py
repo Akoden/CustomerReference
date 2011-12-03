@@ -67,6 +67,7 @@ def init_users():
         User.objects.create_user('jbrown', 'jeremy@akoden.com', 'jbr0wn')
         User.objects.create_user('rtheo',  'theo@akoden.com', 'rthe0')
         User.objects.create_user('azopat', 'azopat@akoden.com', 'az0pat')
+        User.objects.create_user('rmax', 'azopat@akoden.com', 'rmax')
 
 init_users()
         

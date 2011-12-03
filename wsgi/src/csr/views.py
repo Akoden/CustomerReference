@@ -80,6 +80,8 @@ def add_reference(req):
     form = ReferenceForm(req.POST) if (req.method == 'POST') else ReferenceForm()
     if req.method == 'POST':
         if form.is_valid():
+            account = Account.objects.get(username=req.user)
+            form.instance.submitter = account
             form.save()
             return ('redirect', '/references/')
         else:
