@@ -3,8 +3,7 @@
 {% block title %} Customer References {% endblock title %}
 
 {% block breadcrumb %}
-<a href="/references/">References</a>
-<a href="/add_reference/" style="float: right;">Add Reference</a>
+<a href="/references/">References</a> | <a href="/add_reference/">Add Reference</a>
 {% endblock breadcrumb %}
 
 {% block content %}
@@ -18,7 +17,7 @@
       <th>Customer</th>
       <th>By</th>
       <th>Is Public</th>
-      <th>My Vote</th>
+      {% if user %}<th>My Vote</th>{% endif %}
       <th>Total Votes</th>
       <th>Hotness Score</th>
     </tr>
@@ -30,7 +29,7 @@
       <td>{{ r.customer }}</td>
       <td>{{ r.submitter }}</td>
       <td>{{ r.ispublic }}</td>
-      <td>{% if r.my_vote %}done{% else %}<a href='/reference/vote/{{r.id}}'>cast</a>{% endif %}</td>
+      {% if user %}<td>{% if r.my_vote %}done{% else %}<a href='/reference/vote/{{r.id}}'>cast</a>{% endif %}</td>{% endif %}
       <td>{{ r.votes }}</td>
       <td>{{ r.hotness }}</td>
     </tr>

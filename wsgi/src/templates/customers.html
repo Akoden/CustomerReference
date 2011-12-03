@@ -3,8 +3,7 @@
 {% block title %} Customers {% endblock title %}
 
 {% block breadcrumb %}
-<a href="/customers/">Customers</a>
-<a href="/add_customer/" style="float: right;">Add Customer</a>
+<a href="/customers/">Customers</a> | <a href="/add_customer/">Add Customer</a>
 {% endblock breadcrumb %}
 
 {% block content %}
@@ -15,8 +14,6 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>E-mail</th>
-      <th>Website</th>
       <th>Geography</th>
       <th>Industry</th>
       <th>Is Public</th>
@@ -25,9 +22,7 @@
   <tbody>
     {% for c in customers %}
     <tr>
-      <td>{{ c.name }}</td>
-      <td>{{ c.email }}</td>
-      <td>{{ c.website }}</td>
+      <td><a href="{{c.website_href}}" target="_blank">{{ c.name }}</a></td>
       <td>{{ c.get_geography }}</td>
       <td>{{ c.get_industry }}</td>
       <td>{{ c.ispublic }}</td>

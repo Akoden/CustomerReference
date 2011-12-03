@@ -48,6 +48,8 @@ class Customer(models.Model):
         return dict(self.INDUSTRY_CHOICE).get(self.industry)
     def get_geography(self):
         return dict(self.GEOGRAPHY_CHOICE).get(self.geography)
+    def website_href(self):
+        return "http://"+self.website if (self.website and not self.website.startswith("http://")) else self.website
 
 
 def timedelta_to_seconds(td):
